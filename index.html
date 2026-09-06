@@ -24,7 +24,7 @@
     }
 
     .container { 
-      max-width: 600px; 
+      max-width: 650px; 
       margin: 0 auto; 
       background: var(--card-bg); 
       padding: 15px; 
@@ -50,6 +50,13 @@
       margin: 5px 0; 
     }
 
+    .header-details {
+      text-align: right;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
     .search-box { 
       width: 100%; 
       padding: 10px; 
@@ -73,11 +80,10 @@
       display: flex !important; 
       justify-content: space-between; 
       align-items: center; 
-      padding: 10px 0; 
+      padding: 8px 0; 
       border-bottom: 1px solid #eee; 
       color: #000000 !important;
       font-size: 15px;
-      font-weight: 500;
     }
 
     .item-row span {
@@ -92,6 +98,14 @@
       border: 1px solid #8b0000; 
       border-radius: 4px; 
       font-size: 14px;
+    }
+
+    .instructions {
+      font-size: 13px;
+      margin-top: 20px;
+      line-height: 1.5;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
     }
 
     .btn { 
@@ -124,45 +138,182 @@
       <p style="margin:2px 0;">PHONE: 9447578311</p>
     </div>
 
+    <div class="header-details">
+      <p style="margin:2px 0;">കർമ്മം ആരംഭിക്കുന്ന തീയതി: ........................</p>
+      <p style="margin:2px 0;">ജ്യോത്സ്യർ വേണ്ട ദിവസം: ........................ തീയതി: ........................</p>
+    </div>
+
     <input type="text" id="searchInput" class="search-box no-print" placeholder="Search item (സാധനങ്ങൾ തിരയുക)..." onkeyup="filterItems()">
 
-    <div class="category-title">പൂജാ ദ്രവ്യങ്ങൾ (Items List)</div>
-    <div id="poojaItems">
-      <div class="item-row"><span>കദളിപ്പഴം (Kadali Banana)</span><input type="number" placeholder="Qty"></div>
-      <div class="item-row"><span>കർപ്പൂരം (Camphor)</span><input type="number" placeholder="Qty"></div>
-      <div class="item-row"><span>സാമ്പ്രാണി (Incense)</span><input type="number" placeholder="Qty"></div>
-      <div class="item-row"><span>നെയ്യ് (Ghee)</span><input type="number" placeholder="Qty"></div>
-      <div class="item-row"><span>മഞ്ഞൾപ്പൊടി (Turmeric)</span><input type="number" placeholder="Qty"></div>
+    <!-- Main List (Page 1) -->
+    <div class="category-title">പൂജാ ദ്രവ്യങ്ങൾ (Main Items List)</div>
+    <div id="mainItems">
+      <div class="item-row"><span>നിലവിളക്ക്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നല്ലെണ്ണ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വെളിച്ചെണ്ണ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചന്ദനത്തിരി (flora)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചന്ദനം അരച്ചത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തിരിനൂൽ പിന്നി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കർപ്പൂരം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പനീർ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഭസ്മം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അർച്ചന കുങ്കുമം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അഷ്ടഗന്ധം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>താമ്പൂലക്കൂട്ട്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വണ്ടിനൂൽ (3കൂട്ടിയത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ദർഭ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മലർ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അവൽ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കല്ക്കണ്ടം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഉണക്കലരി (വറുത്തപൊടി)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഉണക്കമുന്തിരി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തേൻ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നെയ്യ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ശർക്കര</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പഞ്ചസാര</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഉണക്കലരി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അരിപ്പൊടി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മഞ്ഞൾപ്പൊടി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വാകപ്പൊടി (പച്ച)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഉമിക്കരി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചുണ്ണാമ്പ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കൊട്ടത്തേങ്ങ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വെറ്റില</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അടയ്ക്ക</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പൂണ്ണൂൽ ചുണ്ടങ്ങ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഏലക്കായ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>എള്ള്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വെൺകടുക്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നവധാന്യം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കരിമ്പ് നല്ലത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span> ചെറുനാരങ്ങ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കലശദ്രവ്യം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചന്ദനമുട്ടി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മരച്ചെപ്പ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വാൽക്കണ്ണാടി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കലശക്കുടം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നെല്ല്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പ്ലാശിൻചമത (പൊളിക്കാത്തത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കൂവളച്ചമത - ചാൺ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കടലാടി ചമത</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പ്ലാശിൻ ചമത</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അത്തി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഇത്തി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പേരാൽ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അരയാൽ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വള്ളി (ചുറ്റുമുത്ത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മോരുകളഞ്ഞത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പേരാൽ മൊട്ട്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ബലികരുകക്കുമ്പ് (3കൂട്ടിക്കെട്ടിയത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മുക്കുറ്റി സമൂലം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഗണപതി നാരങ്ങ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വിശറി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചന്ദ്രകല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഭദ്രകാളി പ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വിഷ്ണു പ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മാർജ്ജാര പ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഗോപ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>സ്ത്രീ പ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പുരുഷ പ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ആശേഷപ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ലക്ഷ്മീനാരായണ പ്രതിമ (സ്വർണ്ണം)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>സ്വർണ്ണത്താലി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വിഷ്ണു പ്രതിമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കാമധേനു പ്രതിമ (സ്വർണ്ണം)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഭവന്തി സർപ്പം (സ്വർണ്ണം)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മുട്ട വെള്ളി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പുറ്റ് ചെമ്പ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പഞ്ചഗവ്യം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കദളിപ്പഴം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പൂവൻപഴം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഏത്തപ്പഴം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ആപ്പിൾ, മുന്തിരി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span> ഓറഞ്ച്, മാതളം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഡബിൾ മുണ്ട്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഒറ്റമുണ്ട്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഉത്തരീയം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കാവീമുണ്ട്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തോർത്ത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വെള്ളവസ്ത്രം (മല്ല്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചുവന്ന വസ്ത്രം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മഞ്ഞ വസ്ത്രം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഇളനീർ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചെത്തിപ്പൂവ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തുളസിയില</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കൂവളത്തില</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മുല്ലമാല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചെത്തി,തുളസി മാല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>താമര</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നിറമാല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മറ്റു പുഷ്പങ്ങൾ ധാരാളം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നാളികേരം മുക്കണ്ണുകിരിയുള്ളത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ആലില നല്ലത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മാവില നല്ലത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ആവണി പലക</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പീഠ പലക</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പാൽ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തൈര്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചാണകം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഗോമൂത്രം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നല്ല ചെത്തിപ്പൂവ് (നാരുകളഞ്ഞത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വാഴയില തുമ്പ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചിരട്ട</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പ്ലാവിൻ വിറക്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പൊതി മടൽ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഉരുളി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചട്ടുകം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഇഷ്ടിക</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മണൽ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മുറം, കത്തി, കുട്ട</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അരിപ്പ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>സ്റ്റീൽ പാത്രങ്ങൾ (കിണ്ണം, ബേസൺ, സ്പൂൺ, പ്ലേറ്റ്, ഗ്ലാസ്സ്, തവി, ഉണ്ണിയപ്പച്ചട്ടി,ഇഡ്ഡലി പാത്രം)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കിണ്ടി, ശുദ്ധജലം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തിരിത്തുണി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നെല്ല്, പാ, കുട്ട</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അടക്കാമര പൂക്കുല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തെങ്ങിൻ പൂക്കുല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കുറുത്തോല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>തുളസിതൈ</span><input type="number" placeholder="Qty"></div>
     </div>
 
-    <div class="category-title">മൂലദ്രവ്യങ്ങൾ (Moola Dravyangal)</div>
-    <div id="moolaItems">
-      <div class="item-row"><span>എള്ളെണ്ണ (Sesame Oil)</span><input type="number" placeholder="Qty"></div>
-      <div class="item-row"><span>തേൻ (Honey)</span><input type="number" placeholder="Qty"></div>
-      <div class="item-row"><span>മലർ (Malar)</span><input type="number" placeholder="Qty"></div>
-    </div>
-
-    <!-- Notes Box for Forgotten Items -->
-    <div class="notes-box" style="margin-top: 25px;">
-      <label style="font-weight: bold; display: block; margin-bottom: 5px; color: var(--primary);">
-        അധിക വിവരങ്ങൾ / വിട്ടുപോയവ (Notes):
-      </label>
-      <textarea id="extraNotes" rows="3" placeholder="വിട്ടുപോയ സാധനങ്ങളോ മറ്റ് വിവരങ്ങളോ ഇവിടെ ടൈപ്പ് ചെയ്യാം..." style="width: 100%; padding: 8px; border: 1px solid var(--primary); border-radius: 5px; box-sizing: border-box; font-family: sans-serif;"></textarea>
-    </div>
-
-    <button class="btn no-print" onclick="window.print()">Generate Bill / Print PDF</button>
-  </div>
-
-  <script>
-    function filterItems() {
-      let input = document.getElementById('searchInput').value.toLowerCase();
-      let rows = document.getElementsByClassName('item-row');
-      for (let i = 0; i < rows.length; i++) {
-        let text = rows[i].getElementsByTagName('span')[0].innerText.toLowerCase();
-        rows[i].style.setProperty('display', text.includes(input) ? 'flex' : 'none', 'important');
-      }
-    }
-  </script>
-
-</body>
-</html>
+    <!-- Additional Dravyangal List (Page 2) -->
+    <div class="category-title">അധിക ദ്രവ്യങ്ങൾ (Special Dravyangal)</div>
+    <div id="specialItems">
+      <div class="item-row"><span>ദർഭക്കയർ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പ്ലാശിൻചമത (കൊമ്പോടുകൂടി കൈയോളം നീളത്തിൽ)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അരയാലില (കൊമ്പോടുകൂടി കൈയോളം നീളത്തിൽ)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പൂവാങ്കുറുന്നില</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പവിത്ര മോതിരം (വെള്ളി)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഇരട്ട മത്സ്യം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഇരട്ട ആമ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നവരത്നം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>സ്വർണ്ണാംശം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പുറ്റ് മണ്ണ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മണൽ അരിച്ചത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നല്ലാമരപ്പൊടി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ചാണകപ്പൊടി (ഉണക്കി പൊടിച്ച് അരിച്ചത്)</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വഹ്നിചമത</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പച്ചക്കർപ്പൂരം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഗോരോചനം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കണ്ടിവെണ്ണ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കുങ്കുമപ്പൂവ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അഷ്ടബന്ധം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പാണിക്ക് വസ്ത്രങ്ങൾ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ശംഖുപൊടി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ദാനത്തിന് നാണയങ്ങൾ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കുലവാഴ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ദശപുഷ്പമാല</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ദശപുഷ്പം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>വയമ്പ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ഗ്രന്ഥം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കൺമഷി, ചാന്ത്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>അഞ്ജനക്കല്ല്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പായ - കിടക്ക, തലയിണ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>മുല്ലപ്പൂവ്</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>താമരവളയം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>ആലവട്ടം വെഞ്ചാമരം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>നെറ്റിപ്പട്ടം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>കൊടി, കൊടിക്കയർ, മണി</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പന്തം</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row"><span>പുതിയ ഉടയാടകൾ</span><input type="number" placeholder="Qty"></div>
+      <div class="item-row">
