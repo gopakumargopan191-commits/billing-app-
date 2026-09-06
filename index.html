@@ -316,7 +316,14 @@ function filterItems() {
   });
 }
 
-function generateBill() {
+function generateBill() {<!-- Additional Notes Box -->
+<div class="notes-container" style="margin: 20px auto; max-width: 600px; padding: 10px;">
+  <label for="extraNotes" style="font-weight: bold; display: block; margin-bottom: 5px; color: #8b0000;">
+    അധിക വിവരങ്ങൾ / വിട്ടുപോയവ (Notes):
+  </label>
+  <textarea id="extraNotes" rows="3" placeholder="വിട്ടുപോയ സാധനങ്ങളോ മറ്റ് വിവരങ്ങളോ ഇവിടെ ടൈപ്പ് ചെയ്യാം..." style="width: 100%; padding: 8px; border: 1px solid #8b0000; border-radius: 5px; box-sizing: border-box; font-family: sans-serif;"></textarea>
+</div>
+                         
   const container = document.getElementById('bill-tables-container');
   const errorMsg = document.getElementById('error-msg');
   container.innerHTML = '';
