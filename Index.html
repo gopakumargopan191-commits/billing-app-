@@ -1,1 +1,410 @@
 
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V.C. VIJUSHANTHI - Billing System</title>
+  <style>
+    :root {
+      --primary: #8b0000;
+      --bg: #f4f4f9;
+      --card-bg: #ffffff;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg);
+    }
+    .header {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .header-img {
+      max-width: 140px;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+    .header h1 { margin: 0; color: var(--primary); font-size: 24px; }
+    .header p { margin: 5px 0; color: #555; }
+    
+    .search-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .search-input {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .section-title {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin: 25px 0 15px 0;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .item-card {
+      background: var(--card-bg);
+      padding: 10px 14px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .item-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .input-group {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .input-group input[type="number"] {
+      width: 55px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .input-group select {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .input-group input[type="text"] {
+      flex: 1;
+      min-width: 90px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .moola-card {
+      background: var(--card-bg);
+      padding: 10px 14px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .moola-card label {
+      font-weight: 600;
+      font-size: 14px;
+      min-width: 120px;
+    }
+    .moola-card input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 15px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+      z-index: 100;
+    }
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 4px;
+    }
+    button:hover { opacity: 0.9; }
+
+    #error-msg {
+      color: red;
+      font-weight: bold;
+      margin-top: 8px;
+      display: none;
+    }
+
+    #bill-view {
+      display: none;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    #bill-content {
+      background: white;
+      padding: 25px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .bill-header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; }
+    .bill-img {
+      max-width: 120px;
+      height: auto;
+      margin-bottom: 8px;
+    }
+    .bill-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    .bill-table th, .bill-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    .bill-table th { background-color: #f2f2f2; }
+
+    @media print {
+      body * { visibility: hidden; }
+      #bill-content, #bill-content * { visibility: visible; }
+      #bill-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        padding: 0;
+      }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="main-view" class="no-print">
+  <div class="header">
+    <img src="https://i.ibb.co/czZGxgp/1000207300.jpg" alt="Logo" class="header-img">
+    <h1>V.C. VIJUSHANTHI</h1>
+    <p>VAZHAYIL (H), AYYAMPILLY</p>
+    <p>PHONE: 9447578311</p>
+  </div>
+
+  <div class="search-container">
+    <input type="text" id="search-box" class="search-input" placeholder="Search item (സാധനങ്ങൾ തിരയുക)..." onkeyup="filterItems()">
+  </div>
+
+  <h3 class="section-title">പൂജാ ദ്രവ്യങ്ങൾ (Items List)</h3>
+  <div class="grid-container" id="items-grid"></div>
+
+  <h3 class="section-title">മൂലദ്രവ്യങ്ങൾ (Moola Dravyangal)</h3>
+  <div class="grid-container" id="moola-grid" style="margin-bottom: 80px;"></div>
+
+  <div class="btn-container">
+    <button type="button" onclick="generateBill()">Generate Bill</button>
+    <div id="error-msg">Please enter at least one item or detail!</div>
+  </div>
+</div>
+
+<div id="bill-view">
+  <div id="bill-content">
+    <div class="bill-header">
+      <img src="https://i.ibb.co/czZGxgp/1000207300.jpg" alt="Logo" class="bill-img">
+      <h2 style="margin: 5px 0;">V.C. VIJUSHANTHI</h2>
+      <p style="margin: 3px 0;">VAZHAYIL (H), AYYAMPILLY | PHONE: 9447578311</p>
+      <p style="font-size: 12px; margin-top: 5px;" id="bill-date"></p>
+    </div>
+    
+    <div id="bill-tables-container"></div>
+
+    <p style="text-align: center; font-weight: bold; margin-top: 25px;">*** ശുഭം ***</p>
+  </div>
+
+  <div style="margin-top: 20px; text-align: center;" class="no-print">
+    <button type="button" onclick="safePrint()" style="background: #008CBA;">Print / Save PDF</button>
+    <button type="button" onclick="closeBill()" style="background: #555;">Back to Editing</button>
+  </div>
+</div>
+
+<script>
+const items = [
+  "നിലവിളക്ക്", "നല്ലെണ്ണ", "വെളിച്ചെണ്ണ", "ചന്ദനത്തിരി (flora)", "ചന്ദനം അരച്ചത്", 
+  "തിരിനൂൽ പിണി", "കർപ്പൂരം", "പനിനീർ", "ഭസ്മം", "അർച്ചന കുങ്കുമം", "അഷ്ടഗന്ധം", 
+  "താംബൂലക്കൂട്ട്", "വണ്ടിനൂൽ (3കൂട്ടിയത് )", "ദർഭ", "മലർ", "അവൽ", "കൽക്കണ്ടം", 
+  "അരി (വറുത്തപൊടി)", "ഉണക്കമുന്തിരി", "തേൻ", "നെയ്യ്", "ശർക്കര", "പഞ്ചസാര", 
+  "ഉണക്കലരി", "അരിപ്പൊടി", "മഞ്ഞൾപ്പൊടി", "വാകപ്പൊടി (പച്ച)", "ഉമിക്കരി", "ചുണ്ണാമ്പ്", 
+  "കോട്ടത്തേങ്ങ", "വെറ്റില", "അടയ്ക്ക", "പുണ്യാഹം ചുണ്ടങ്ങ", "ഏലക്കായ്", "എള്ള്", 
+  "വെൺകടുക്", "നവധാന്യം", "കരിമ്പ് നല്ലത്", "ചെറുനാരങ്ങ", "കലശദ്രവ്യം", "ചന്ദനമുട്ടി", 
+  "മരച്ചെപ്പ്", "വാൽകണ്ണാടി", "കലശക്കുടം", "നെല്ല്", "പ്ലാശിൻചമത (പൊളിക്കാത്തത്)", 
+  "കൂവളചമത - ചാൺ", "കടലാടി ചമത", "പ്ലാശിൻ ചമത", "അത്തി", "ഇത്തി", "പേരാൽ", 
+  "അരയാൽ", "വള്ളി (ചുറ്റമൃത് മൊരിക്കളഞ്ഞത്)", "പേരാൽ മൊട്ട്", "ബലികറുകക്കൂമ്പ് (3കൂട്ടിക്കെട്ടിയത് )", 
+  "മുക്കുറ്റി സമൂലം", "ഗണപതി നാരങ്ങ", "വിശറി", "ചന്ദ്രകല", "ഭദ്രകാളി പ്രതിമ", 
+  "വിഷ്ണു പ്രതിമ", "മാർജ്ജാര പ്രതിമ", "ഗോപ്രതിമ", "സ്ത്രീ പ്രതിമ", "പുരുഷ പ്രതിമ", 
+  "ആശേഷപ്രതിമ", "ലക്ഷ്മിനാരായണ പ്രതിമ (സ്വർണ്ണം)", "സ്വർണ്ണത്താലി", 
+  "കാമധേനു പ്രതിമ (സ്വർണ്ണം)", "ദമ്പതി സർപ്പം (സ്വർണ്ണം)", "മുട്ട വെളളി", "പുറ്റ് ചെമ്പ്", 
+  "പഞ്ചശിരസ്സ്","പവിത്ര മോതിരം (വെള്ളി)", "ഇരട്ട മത്സ്വം", "ഇരട്ട ആമ", 
+  "നവരത്നം", "സ്വർണ്ണാംശം", "കദളിപ്പഴം", "പൂവൻപഴം", "ഏത്തപ്പഴം", "ആപ്പിൾ, മുന്തിരി", "ഓറഞ്ച്, മാതളം", 
+  "ഡബിൾ മുണ്ട്", "ഒറ്റമുണ്ട്", "ഉത്തരീയം", "കാവിമുണ്ട്", "തോർത്ത്", "വെള്ളവസ്ത്രം (മല്ല്)", 
+  "ചുവന്ന വസ്ത്രം", "മഞ്ഞ വസ്ത്രം", " നീല വസ്‌ത്രം "," റോസ് വസ്‌ത്രം", പച്ച വസ്‌ത്രം","ചെത്തിപ്പൂവ്", "തുളസിയില", "കൂവളത്തില", 
+  "മുല്ലമാല", "ചെത്തി,തുളസി മാല", "താമര", "നിറമാല", "മറ്റു പുഷ്പങ്ങൾ ധാരാളം", "നാളികേരം  മൂക്കു ചകിരിയുള്ളത്"," ഇളനീർ", "ആലില നല്ലത്", "മാവില നല്ലത്", "ആവണി പലക", "പീഠ പലക", "പാൽ", 
+  "തൈര്", "ചാണകം", "ഗോമൂത്രം", "നല്ല ചെത്തിപ്പൂവ് (നാരുകളഞ്ഞത്)", "വാഴയില തൂശൻ", 
+  "ചിരട്ട", "പ്ലാവിൻ വിറക്", "പൊതി മടൽ", "ഉരുളി", "ചട്ടുകം", "ഇഷ്ടിക", "മണൽ", 
+  "മുറം, കത്തി, കൂട്ട", "അരിപ്പ", "സ്റ്റീൽ പാത്രങ്ങൾ (ഡവറ, ബെയ്സൺ, സ്പൂൺ, പ്ലേറ്റ്, ഗ്ലാസ്, തവി, ഉണ്ണിയപ്പച്ചട്ടി,ഇഡ്ഡലി പാത്രം)", 
+  "കിണ്ടി, ശുദ്ധജലം", "തിരിത്തുണി", "നെല്ല്, പറ, കൂട്ട", "അടക്കാമര പൂക്കുല", 
+  "തെങ്ങിൻ പൂക്കുല", "കുരുത്തോല", "തുളസിത്തൈ", "ദർഭക്കയർ", 
+  "പ്ലാശിൻചമത (കൊമ്പോടുകൂടി കൈയോളം നീളത്തിൽ)", 
+  "അരയാലില (കൊമ്പോടുകൂടി കൈയോളം നീളത്തിൽ)", 
+  "പൂവാങ്കുരുന്നില", "പുറ്റു മണ്ണ്", "മണൽ അരിച്ചത്", "നാല്പാമരപ്പൊടി", 
+  "ചാണകപ്പൊടി (ഉണക്കി പൊടിച്ച് അരിച്ചത്)", "വഹ്നിചമത", "പച്ചകർപ്പൂരം", "ഗോരോചനം", 
+  "കണ്ടിവെണ്ണ", "കുങ്കുമപ്പൂവ്", "അഷ്ടബന്ധം", "പാണിക്ക് വസ്ത്രങ്ങൾ", "ശംഖുപൊടി", 
+  "ദാനത്തിന് നാണയങ്ങൾ", "കുലവാഴ", "ദശപുഷ്പമാല", "ദശപുഷ്പം", "വയറ", 
+  "ഗ്രന്ഥം", "കന്മഷി, ചാന്ത്", "അഞ്ചനക്കല്ല്", "ശയ്യ - കിടക്ക, തലയിണ", "മുല്ലപ്പൂവ്", 
+  "താമരവളയം", "ആലവട്ടം വെഞ്ചാമരം", "നെറ്റിപ്പട്ടം", "കൊടി, കൊടിക്കയർ, മണി", 
+  "പന്തം", "പുതിയ ഉടയാടകൾ", "കോൽ തിരി", "കൈതിരി", "കുത്തുവിളക്ക്", 
+  "ധാരകാൽ", "ധാരപാത്രം", "മുളപാലിക", "കർക്കരി കുംഭം", "ചെമ്പുകുടം", 
+  "വെള്ളികുടം", "ചെറുപയർ", "യവം", "കരിങ്ങാലി", "പാതിരി"
+];
+
+const moolaItems = [ " മുളദ്രവ്യങ്ങൾ",
+  "പാദ്യം", "അർഘ്യം", "ആചാമം", "കഷായം", "ഫലം", "രത്നം", "ലോഹം", "ഗന്ധം", 
+  "പുഷ്പം", "മംഗലജലം", "ഭസ്മം", "ശാന്തി", "ഉപമാനം", "ധാതു", "ഔഷധി", 
+  "മണ്ണ്", "ബീജം", "അമലകം", "മാർജ്ജനം", "അക്ഷതം"
+];
+
+const units = ["Nos", "Kg", "Gram", "Litre", "ML", "Packet", "Bunch", "Metre"];
+
+function renderItems() {
+  const container = document.getElementById('items-grid');
+  container.innerHTML = items.map((item, index) => `
+    <div class="item-card" data-name="${item}">
+      <span class="item-name">${item}</span>
+      <div class="input-group">
+        <input type="number" id="qty-${index}" min="0" step="any" placeholder="Qty">
+        <select id="unit-${index}">
+          ${units.map(u => `<option value="${u}">${u}</option>`).join('')}
+        </select>
+        <input type="text" id="note-${index}" placeholder="Note...">
+      </div>
+    </div>
+  `).join('');
+
+  const moolaContainer = document.getElementById('moola-grid');
+  moolaContainer.innerHTML = moolaItems.map((mItem, index) => `
+    <div class="moola-card" data-name="${mItem}">
+      <label>${mItem}:</label>
+      <input type="text" id="moola-${index}" placeholder="വിവരങ്ങൾ">
+    </div>
+  `).join('');
+}
+
+function filterItems() {
+  const query = document.getElementById('search-box').value.toLowerCase();
+  const cards = document.querySelectorAll('.item-card, .moola-card');
+  
+  cards.forEach(card => {
+    const name = card.getAttribute('data-name').toLowerCase();
+    card.style.display = name.includes(query) ? 'flex' : 'none';
+  });
+}
+
+function generateBill() {
+  const container = document.getElementById('bill-tables-container');
+  const errorMsg = document.getElementById('error-msg');
+  container.innerHTML = '';
+  
+  let hasData = false;
+  let mainRows = '';
+  let count = 1;
+
+  items.forEach((item, index) => {
+    const qtyVal = document.getElementById(`qty-${index}`).value;
+    const unitVal = document.getElementById(`unit-${index}`).value;
+    const noteVal = document.getElementById(`note-${index}`).value.trim();
+
+    if (qtyVal && parseFloat(qtyVal) > 0) {
+      hasData = true;
+      mainRows += `
+        <tr>
+          <td>${count++}</td>
+          <td>${item}</td>
+          <td>${qtyVal} ${unitVal}</td>
+          <td>${noteVal ? noteVal : '-'}</td>
+        </tr>`;
+    }
+  });
+
+  if (mainRows) {
+    container.innerHTML += `
+      <h4 style="margin-top: 15px; margin-bottom: 5px;">പൂജാ ദ്രവ്യങ്ങൾ</h4>
+      <table class="bill-table">
+        <thead>
+          <tr>
+            <th style="width: 8%;">Sl No.</th>
+            <th>Item Name</th>
+            <th style="width: 25%;">Quantity / Unit</th>
+            <th style="width: 30%;">Note / Remarks</th>
+          </tr>
+        </thead>
+        <tbody>${mainRows}</tbody>
+      </table>`;
+  }
+
+  let moolaRows = '';
+  moolaItems.forEach((mItem, index) => {
+    const val = document.getElementById(`moola-${index}`).value.trim();
+    if (val) {
+      hasData = true;
+      moolaRows += `
+        <tr>
+          <td style="font-weight: bold; width: 35%;">${mItem}</td>
+          <td>${val}</td>
+        </tr>`;
+    }
+  });
+
+  if (moolaRows) {
+    container.innerHTML += `
+      <h4 style="margin-top: 20px; margin-bottom: 5px;">മുളദ്രവ്യങ്ങൾ</h4>
+      <table class="bill-table">
+        <tbody>${moolaRows}</tbody>
+      </table>`;
+  }
+
+  if (!hasData) {
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  errorMsg.style.display = 'none';
+  document.getElementById('bill-date').innerText = "Date: " + new Date().toLocaleDateString();
+  document.getElementById('main-view').style.display = 'none';
+  document.getElementById('bill-view').style.display = 'block';
+}
+
+function safePrint() {
+  try {
+    window.print();
+  } catch (e) {
+    alert("Printing is restricted inside this editor preview. Open the file in Chrome to save or print PDF.");
+  }
+}
+
+function closeBill() {
+  document.getElementById('main-view').style.display = 'block';
+  document.getElementById('bill-view').style.display = 'none';
+}
+
+renderItems();
+</script>
+</body>
+</html>
