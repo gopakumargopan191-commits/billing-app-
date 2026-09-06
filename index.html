@@ -401,15 +401,14 @@ function safePrint() {
 function closeBill() {
   document.getElementById('main-view').style.display = 'block';
   document.getElementById('bill-view').style.display = 'none';
-}
-- Notes Box for Forgotten Items -->
-<div style="margin: 20px 0; padding: 15px; background: #ffffff; border-radius: 8px; border: 1px solid #ddd;">
-  <label for="extraNotes" style="font-weight: bold; display: block; margin-bottom: 8px; font-family: sans-serif;">
+<!-- Notes / Forgotten Items Section -->
+<div class="notes-section" style="margin-top: 20px;">
+  <label for="extraNotes" style="font-weight: bold; display: block; margin-bottom: 5px; font-family: sans-serif;">
     Additional Notes / Forgotten Items:
   </label>
-  <textarea id="extraNotes" rows="4" placeholder="Type forgotten items or extra details here..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: sans-serif; resize: vertical;"></textarea>
+  <textarea id="extraNotes" rows="4" placeholder="Type forgotten items or extra details here..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: sans-serif;"></textarea>
 </div>
-renderItems();
+  renderItems();
 </script>
 </body>
 </html>
