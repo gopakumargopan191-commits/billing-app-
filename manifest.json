@@ -8,14 +8,16 @@
   "theme_color": "#8b0000",
   "icons": [
     {
-      "src": "https://i.ibb.co/czZGxgp/1000207300.jpg",
+      "src": "icon.jpg",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     },
     {
-      "src": "https://i.ibb.co/czZGxgp/1000207300.jpg",
+      "src": "icon.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     }
   ]
 }
