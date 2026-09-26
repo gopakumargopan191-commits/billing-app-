@@ -1,0 +1,21 @@
+{
+  "name": "V.C. VIJUSHANTHI Billing System",
+  "short_name": "Vijushanthi",
+  "description": "Billing and PoOja Dravyangal Management System",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8b0000",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/czZGxgp/1000207300.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://i.ibb.co/czZGxgp/1000207300.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
