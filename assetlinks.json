@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.gopakumargopan191_commits.twa",
+        "sha256_cert_fingerprints": ["CD:8E:8F:FA:12:30:25:87:44:86:CD:FA:DB:47:DF:10:A6:51:55:73:6D:27:2C:8E:8E:B1:75:91:0E:D2:42:5B"]
+      }
+    }]
